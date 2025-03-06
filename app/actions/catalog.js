@@ -24,10 +24,13 @@ export async function addCatalogItem(formData) {
 export async function getCatalogItems() {
     try {
       await connectDB();
-      const items = await Catalog.find().lean();
+      const items = await Catalog.find()
+        .sort({ createdAt: -1 }) // Sort by createdAt in descending order
+        .lean();
       return items;
     } catch (error) {
       console.error("Error fetching catalog items:", error);
       return [];
     }
   }
+  

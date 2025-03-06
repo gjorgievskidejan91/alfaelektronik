@@ -44,11 +44,11 @@ export default function CatalogPage() {
       {/* Product Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {items.map((item) => (
-          <div key={item._id} className="bg-white p-4 rounded-lg shadow-md">
-            <img src={item.image} alt={item.title} className="w-full h-40 object-cover rounded-md" />
+          <div key={item.sifa} className="bg-white p-4 rounded-lg shadow-md">
+            <img src={item.image} alt={item.title} className="w-full h-60 object-cover rounded-md" />
             <h2 className="text-lg font-semibold mt-2">{item.title}</h2>
             <p className="text-gray-600">Sifra: {item.sifra}</p>
-            <p className="text-blue-600 font-bold">{item.cena} USD</p>
+            <p className="text-blue-600 font-bold">{item.cena} Ден</p>
           </div>
         ))}
       </div>
