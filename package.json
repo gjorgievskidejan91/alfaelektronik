@@ -1,16 +1,20 @@
 {
   "name": "catalogue",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "update": "node scripts/updateSifraString.js"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^4.3.0",
     "mongoose": "^8.12.1",
     "next": "15.2.1",
+    "pdf-lib": "^1.17.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

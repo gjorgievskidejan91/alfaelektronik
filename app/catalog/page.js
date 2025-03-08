@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { addCatalogItem, getCatalogItems } from "@/app/actions/catalog";
-
+import Search from "../components/Search";
 export default function CatalogPage() {
   const [message, setMessage] = useState("");
   const [items, setItems] = useState([]);
@@ -38,13 +38,14 @@ export default function CatalogPage() {
         </div>
         <button type="submit" className="mt-4 bg-blue-600 text-white py-2 px-4 rounded">Add Product</button>
       </form>
+      <Search />
 
       {message && <p className="text-green-600 text-center">{message}</p>}
 
       {/* Product Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {items.map((item) => (
-          <div key={item.sifa} className="bg-white p-4 rounded-lg shadow-md">
+          <div key={item._id} className="bg-white p-4 rounded-lg shadow-md">
             <img src={item.image} alt={item.title} className="w-full h-60 object-cover rounded-md" />
             <h2 className="text-lg font-semibold mt-2">{item.title}</h2>
             <p className="text-gray-600">Sifra: {item.sifra}</p>

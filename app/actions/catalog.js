@@ -21,16 +21,33 @@ export async function addCatalogItem(formData) {
 }
 
 // Function to fetch all catalog items
-export async function getCatalogItems() {
-    try {
-      await connectDB();
-      const items = await Catalog.find()
-        .sort({ createdAt: -1 }) // Sort by createdAt in descending order
-        .lean();
-      return items;
-    } catch (error) {
-      console.error("Error fetching catalog items:", error);
-      return [];
-    }
+export async function getCatalogItems(searchTerm = '') {
+  console.log(searchTerm);
+  try {
+    await connectDB();
+
+    // Search query
+    const query = searchTerm
+      ? {
+          $or: [
+            { title: { $regex: searchTerm, $options: 'i' } }, // Case-insensitive search on title
+            { sifraString: { $regex: searchTerm, $options: 'i' } }, // Search sifraString
+          ],
+        }
+      : {}; // No filter if no search term
+
+    const items = await Catalog.find(query)
+      .sort({ createdAt: -1 })
+      .lean();
+
+    const formattedItems = items.map(item => ({
+      ...item,
+      _id: item._id.toString(),
+    }));
+
+    return formattedItems;
+  } catch (error) {
+    console.error('Error fetching catalog items:', error);
+    return [];
   }
-  
+}
