@@ -7,6 +7,9 @@ export default function Navbar() {
         <Link href="/catalog" className="text-white text-lg font-semibold">
           Catalog
         </Link>
+        <Link href="/generator" className="text-white text-lg font-semibold">
+          Generator
+        </Link>
         
         <div className="flex space-x-4">
           <Link href="/search" className="text-white">
