@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import { getCatalogItems } from '../actions/catalog';
 import ItemCard from '../components/ItemCard';
-
+import DocumentComponent from '../components/Document';
 // import UpdateSifraButton from '../components/UpdateSifraButton';
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -23,6 +23,7 @@ const SearchPage = () => {
 
   return (
     <div className="p-6">
+      <DocumentComponent />
       <div className="mb-6">
         <input
           type="text"
